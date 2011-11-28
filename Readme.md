@@ -25,7 +25,7 @@ Add an env.json file to your repo.
 ```
 
 ```javascript
-var env = require('env')
+var env = require('env')()
 
 env.ok(function(err) {
   if (!err) return
