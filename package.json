@@ -1,0 +1,26 @@
+{
+    "name": "env"
+  , "version": "0.0.1"
+  , "description": "Environment variable manager"
+  , "keywords": ["process", "environment", "env"]
+  , "author": "Daniel D. Shaw <dshaw@dshaw.com> (http://dshaw.com)"
+  , "repository":{
+        "type": "git"
+      , "url": "https://github.com/dshaw/env"
+    }
+  , "issues":{
+      "url": "https://github.com/dshaw/env/issues"
+    }
+  , "main": "index"
+  , "directories" : {
+        "lib" : "lib"
+      , "test" : "test"
+    }
+    , "devDependencies": {
+      "tap": "0.0.x"
+    }
+  , "scripts" : {
+        "test" : "tap ./test/*.js"
+    }
+  , "engines": { "node": ">= 0.5.9" }
+}
