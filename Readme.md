@@ -35,6 +35,11 @@ env.ok(function(err) {
 
 // Yes, it's SYNC, so you can do this too!
 
+function handleEnv (err) {
+  if (!err) return
+  process.exit(1)
+}
+
 if (env.ok(handleEnv)) {
   var port = env.get('SETUP_PORT')
   server.listen(port)
@@ -42,22 +47,3 @@ if (env.ok(handleEnv)) {
 ```
 
 Env is sync like require, so it's tasks can be accomplished before app execution.
-
-### API
-
-```javascript
-// get a single environment variable (process.env.SYS_USER)
-var username = env.get('SYS_USER')
-
-// get multi
-var dbconfig = env.get('DB_HOST', 'DB_PORT', 'DB_USER', 'DB_PASS')
-
-// get all managed environment variables
-var envs = env.get()
-
-// set
-env.set('MIXTURE_TYPE', 'announce-cluster')
-
-// delete
-env.del('MIXTURE_TYPE', 'announce-cluster')
-```
