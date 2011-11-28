@@ -3,11 +3,7 @@ var Env = require('..')
   , tap = require('tap')
   , test = tap.test
 
-console.log(Env, env)
-
 test('env core', function (t) {
-  t.plan(6)
-
   t.ok(Env.version)
   t.ok(env.ok)
   t.ok(env.get)
@@ -82,6 +78,16 @@ test('env id', function (t) {
   env.set('ENV_ID', '1')
   var env2 = require('..')('./fixtures/env.json')
   t.equal(env2.id, '1')
+
+  t.end()
+})
+
+test('env with no env.json', function (t) {
+  var env3 = require('..')()
+  t.ok(env3.evars)
+  t.isa(env3.evars, 'object')
+  t.equal(Object.keys(env3.evars).length, 0)
+  t.equal(Object.keys(env3.get()).length, 0)
 
   t.end()
 })

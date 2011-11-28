@@ -1,6 +1,6 @@
 {
     "name": "env"
-  , "version": "0.0.1"
+  , "version": "0.0.2"
   , "description": "Environment variable manager"
   , "keywords": ["process", "environment", "env"]
   , "author": "Daniel D. Shaw <dshaw@dshaw.com> (http://dshaw.com)"
