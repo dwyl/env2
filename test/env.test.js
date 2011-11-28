@@ -86,8 +86,8 @@ test('env with no env.json', function (t) {
   var env3 = require('..')()
   t.ok(env3.evars)
   t.isa(env3.evars, 'object')
-  t.equal(Object.keys(env3.evars).length, 0)
-  t.equal(Object.keys(env3.get()).length, 0)
+  t.deepEqual(env3.evars, {})
+  t.deepEqual(env3.get(), {})
 
   t.end()
 })
