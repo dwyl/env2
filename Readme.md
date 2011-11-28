@@ -41,7 +41,7 @@ if (env.ok(handleEnv)) {
 }
 ```
 
-Env is sync like require, so it's tasks can be accomplished before a
+Env is sync like require, so it's tasks can be accomplished before app execution.
 
 ### API
 
