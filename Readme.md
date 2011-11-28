@@ -5,6 +5,10 @@ Env - In your environment managing your variables.
 
 Managing environment variables can be a pain. Env helps make that better.
 
+### Module status
+
+Env is an evolving project based which came out of discussions with [@joemccann](http://twitter.com/joemccann) and [@clintandrewhall](http://twitter.com/clintandrewhall). I don't consider this package fully baked yet.
+
 ### Get Env.
 
 ```bash
@@ -47,3 +51,7 @@ if (env.ok(handleEnv)) {
 ```
 
 Env is sync like require, so it's tasks can be accomplished before app execution.
+
+### Follow dshaw
+- [twitter.com/dshaw](http://twitter.com/dshaw)
+- [github.com/dshaw](http://github.com/dshaw)
