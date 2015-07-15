@@ -1,6 +1,6 @@
 {
     "name": "env"
-  , "version": "0.0.2"
+  , "version": "1.0.0"
   , "description": "Environment variable manager"
   , "keywords": ["process", "environment", "env"]
   , "author": "Daniel D. Shaw <dshaw@dshaw.com> (http://dshaw.com)"
@@ -17,10 +17,10 @@
       , "test" : "test"
     }
     , "devDependencies": {
-      "tap": "0.0.x"
+      "tap": "^1.3.1"
     }
   , "scripts" : {
         "test" : "tap ./test/*.js"
     }
-  , "engines": { "node": ">= 0.5.9" }
+  , "engines": { "node": ">= 0.10.0" }
 }

@@ -3,6 +3,9 @@ Env - In your environment managing your variables.
 
 [![Build Status](https://secure.travis-ci.org/dshaw/env.png)](http://travis-ci.org/dshaw/env)
 
+[![Dependency Status](https://david-dm.org/nelsonic/env.svg)](https://david-dm.org/nelsonic/env)
+[![devDependency Status](https://david-dm.org/nelsonic/env/dev-status.svg)](https://david-dm.org/nelsonic/env#info=devDependencies)
+
 Managing environment variables can be a pain. Env helps make that better.
 
 ### Module status
