@@ -1,9 +1,11 @@
 Env - In your environment managing your variables.
 ===
 
-[![Build Status](https://secure.travis-ci.org/dshaw/env.png)](http://travis-ci.org/dshaw/env)
-[![Dependency Status](https://david-dm.org/nelsonic/env.svg)](https://david-dm.org/nelsonic/env)
-[![devDependency Status](https://david-dm.org/nelsonic/env/dev-status.svg)](https://david-dm.org/nelsonic/env#info=devDependencies)
+[![Build Status](https://travis-ci.org/dwyl/env.svg)](https://travis-ci.org/dwyl/env)
+[![Test Coverage](https://codeclimate.com/github/dwyl/env/badges/coverage.svg)](https://codeclimate.com/github/dwyl/env/coverage)
+[![Code Climate](https://codeclimate.com/github/dwyl/env/badges/gpa.svg)](https://codeclimate.com/github/dwyl/env)
+[![Dependency Status](https://david-dm.org/dwyl/env.svg)](https://david-dm.org/dwyl/env)
+[![devDependency Status](https://david-dm.org/dwyl/env/dev-status.svg)](https://david-dm.org/dwyl/env#info=devDependencies)
 
 Managing environment variables can be a pain. Env helps make that better.
 

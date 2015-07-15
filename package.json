@@ -17,11 +17,20 @@
       , "test" : "test"
     }
     , "devDependencies": {
-        "tape": "^4.0.0"
+        "codeclimate-test-reporter": "0.1.0"
+      , "istanbul": "^0.3.17"
+      , "tape": "^4.0.0"
     }
   , "scripts" : {
-        "test" : "tape ./test/*.js",
-        "coverage":"istanbul cover tape ./test/env.test.js"
+        "test" : "tape ./test/*.js"
+        , "coverage" : "istanbul cover tape ./test/env.test.js"
+        , "check-coverage" : "istanbul cover tape ./test/*.js && istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100"
+        , "codeclimate": "CODECLIMATE_REPO_TOKEN=5eff89a1f915b11bf7665cf239a7cb9d972d93e8bd2604f67429ba946b5f06ee ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info"
     }
+  ,  "pre-commit": [
+      "check-coverage",
+      "codeclimate"
+    ]
   , "engines": { "node": ">= 0.10.0" }
+  , "keywords": [ "env", "environment", "variables", "config" ]
 }
