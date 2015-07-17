@@ -6,6 +6,7 @@ Env - In your environment managing your variables.
 [![Code Climate](https://codeclimate.com/github/dwyl/env/badges/gpa.svg)](https://codeclimate.com/github/dwyl/env)
 [![Dependency Status](https://david-dm.org/dwyl/env.svg)](https://david-dm.org/dwyl/env)
 [![devDependency Status](https://david-dm.org/dwyl/env/dev-status.svg)](https://david-dm.org/dwyl/env#info=devDependencies)
+[![npm](https://img.shields.io/npm/v/env.svg)](https://www.npmjs.com/package/env)
 
 Managing environment variables can be a pain. Env helps make that better.
 
