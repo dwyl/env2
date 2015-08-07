@@ -57,4 +57,23 @@ var env = require('env2')('./path-to-your/env.json')
 console.log(process.env.DB_HOST); // "127.0.0.1"
 ```
 
-Env is synchronous; it loads all your config *before* app/script execution.
+Env is synchronous; it loads all your configuration variables into the
+`process.env` object *before* app/script execution.
+
+
+## Name ?
+
+**Q**: Why is it called "env2"?  
+**A**: as the digit in the name suggests, there was/is an "env" (version 1):
+https://www.npmjs.com/package/env written by [@dshaw](https://github.com/dshaw)
+sadly, it was never finished and has not been updated in 4 years ...
+We asked Dan if he would accept a Pull Request updating the package:
+https://github.com/dshaw/env/issues/6 and he said he *would* accept it ...
+But after investing the time and submitting the pull request:
+https://github.com/dshaw/env/pull/8 which updated the package to the latest
+version of Node/io.js and had tests & 100% coverage, the PR got ignored.
+see: https://twitter.com/dshaw/status/628237150253772801
+Not that we're "_impatient_" but we need to move on with our code/lives.
+If the PR to env ever gets merged, we *could* use that instead,
+but actually **env2** is ***much simpler*** and servers our needs better,
+so we are probably going to stick with the "***New and Improved***" Version.

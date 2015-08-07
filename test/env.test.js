@@ -1,93 +1,63 @@
-var Env = require('..')
-  , Path = require('path')
-  , env_json = Path.resolve(__dirname + '/fixtures/env.json')
-  , env = require('..')(env_json)
-  , test = require('tape')
+var test    = require('tape');
+var fs      = require('fs');
+var path    = require('path');
+var envfile = path.resolve(__dirname + '/../env.json');
+var sample  = path.resolve(__dirname + '/../env.json_sample');
+var tempenv = './tempenv.json';
+var decache = require('decache');
+var ENVCOPY = {};
 
-test('env core', function (t) {
-  t.ok(Env.version)
-  t.ok(env.ok)
-  t.ok(env.get)
-  t.ok(env.set)
-  t.ok(env.del)
-
-  t.equal(env.evars, require(env_json))
-
-  t.end()
-})
-
-test('env ok', function (t) {
-  env.set('DBUSER', 'user')
-  env.set('DBPASSWORD', 'password')
-  t.ok(env.ok())
-
-  env.del()
-  t.end()
-})
-
-test('env not ok', function (t) {
-  t.plan(3)
-
-  var envHandler = function (err) {
-    t.ok(err)
-    t.equal(err.message, 'DBUSER not defined')
+test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.js", function(t) {
+  require('../lib/env');
+  decache('../lib/env');
+  try {
+    if(require(envfile)) { // check if the file exists!
+      var env = require(envfile);
+      fs.renameSync(envfile, tempenv);
+      decache(envfile);
+    }
   }
+  catch (e) {
+    console.log(envfile + ' NOT exist!')
+    // do nothing!. if it failed that's fine!
+  }
+  // make a copy of all the environment variables so we can restore them below
+  var keys = Object.keys(process.env)
+  keys.map(function(k) {
+    ENVCOPY[k] = process.env[k];
+    delete process.env[k];
+  });
 
-  t.ok(!env.ok(envHandler))
+  decache('../lib/env');
+  require('../lib/env'); // this should spit out an error message now!
+  // console.log(" - - - - - > " +process.env.GITHUB_CLIENT_ID);
+  t.ok(!process.env.GITHUB_CLIENT_ID, "GITHUB_CLIENT_ID environment variable NOT SET!");
+  decache('../lib/env');
+  t.end();
+});
 
-  t.end()
-})
 
-test('env set', function (t) {
-  env.set('DBUSER', 'dshaw')
-  var dbuser = env.get('DBUSER')
-  t.equal(dbuser, 'dshaw');
+test("CREATE the env.json file from env.json_sample if it does not exist", function(t) {
+  setTimeout(function(){
+    var fs      = require('fs');
+    var path    = require('path');
+    var envfile = path.resolve(__dirname + '/../env.json');
+    try { // check the tempenv file was created from the previous test
 
-  env.del()
-  t.end()
-})
-
-test('env get multi', function (t) {
-  env.set('DBUSER', 'user')
-  env.set('DBPASSWORD', 'password')
-  env.set('DBX', 'x')
-  var dbconfig = env.get('DBUSER', 'DBPASSWORD', 'DBX')
-  t.equal(dbconfig['DBUSER'], 'user');
-  t.equal(dbconfig['DBPASSWORD'], 'password');
-  t.equal(dbconfig['DBX'], 'x');
-
-  env.del('DBX')
-  env.del()
-  t.end()
-})
-
-test('env get all', function (t) {
-  env.set('DBUSER', 'user')
-  env.set('DBPASSWORD', 'password')
-  env.set('DBX', 'x')
-  var dbconfig = env.get()
-  t.equal(dbconfig['DBUSER'], 'user');
-  t.equal(dbconfig['DBPASSWORD'], 'password');
-  t.equal(dbconfig['DBX'], undefined);
-
-  env.del('DBX')
-  env.del()
-  t.end()
-})
-
-test('env id', function (t) {
-  env.set('ENV_ID', '1')
-  var env2 = require('..')(env_json)
-  t.equal(env2.id, '1')
-
-  t.end()
-})
-
-test('env with no env.json', function (t) {
-  var env3 = require('..')()
-  t.ok(env3.evars)
-  t.ok(typeof env3.evars  === 'object', 'env is an object');
-  t.deepEqual(env3.evars, {})
-  t.deepEqual(env3.get(), {})
-  t.end()
-})
+      // console.log(fs.lstatSync(tempenv).birthtime);
+      fs.renameSync(tempenv, envfile); // restore the env.json from tempenv.json
+    }
+    catch (e) { // else create it from the _sample file!
+      fs.createReadStream(envfile+'_sample').pipe(fs.createWriteStream(envfile));
+    }
+    // require the ./lib/env.js and expect it to work!
+    require('../lib/env');
+    // restore environment variables from ENVCOPY for travis-ci ...
+    var keys = Object.keys(ENVCOPY);
+    keys.map(function(k){
+      process.env[k] = ENVCOPY[k];
+    });
+    t.ok(process.env.GITHUB_CLIENT_ID, "GITHUB_CLIENT_ID environment variable is set!");
+    t.end();
+  },100);
+});
