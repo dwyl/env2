@@ -22,8 +22,11 @@ This means we need a simple/reliable way of managing **environment variables**;
 
 ## What?
 
-env2 allows you to store your environment variables in a `env.json` file
+env2 allows you to store your environment variables in an `env.json` file
 which gets loaded when your app starts.
+
+All the entries in the `env.json` file are available as keys in
+the `process.env` object.
 
 ## How?
 
@@ -33,9 +36,15 @@ First create an `env.json` file in your repo:
 {
   "DB_HOST": "127.0.0.1",
   "DB_PORT": 9200,
-  "DB_USER": "thisguy",
+  "DB_USER": "anon",
   "DB_PASS": "password"
 }
+```
+if you don't want your `env.json` to be in your version control
+(i.e. _visible on GitHub_) simply *add* the filename to your `.gitignore` file:
+
+```sh
+echo 'env.json' >> .gitignore
 ```
 
 ### Install from NPM
@@ -48,7 +57,7 @@ npm install env2 --save
 
 ### Use in your Code
 
-Then in your script:
+Then in your script/module:
 
 ```javascript
 var env = require('env2')('./path-to-your/env.json')
@@ -60,6 +69,23 @@ console.log(process.env.DB_HOST); // "127.0.0.1"
 Env is synchronous; it loads all your configuration variables into the
 `process.env` object *before* app/script execution.
 
+<br />
+
+## Do you want to Define Priority for Variables?
+
+Do you want the ability to *specify* the priority which
+environment variables take precendence?
+e.g: if you supply a command-line argument when running your script/app:
+```sh
+evn=PROD API_KEY=token.dwyl.yolo node myapp.js
+```
+We have an open discussion around this: https://github.com/dwyl/env2/issues/1
+
+At present, any environment variable defined in the environment where
+your app is running (or via command-line arguments) will take
+precendence over the same key in your `env.json` file ... if you prefer
+to have the option to *specify* the priority, please add a comment to the isssue:
+https://github.com/dwyl/env2/issues/1
 
 ## Name ?
 

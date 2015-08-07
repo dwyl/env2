@@ -4,7 +4,7 @@
   "description": "Environment variable loader",
   "keywords": ["process", "environment", "env"],
   "author":"Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
-  "inspired-by": "https://github.com/dshaw/env (unmaintained/unloved)",
+  "inspired-by": "https://github.com/dshaw/env (unmaintained/unloved! see: http://git.io/vOjWp)",
   "repository": {
     "type": "git",
     "url": "https://github.com/dwyl/env2"
