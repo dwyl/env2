@@ -1,4 +1,4 @@
-Env - In your environment managing your variables.
+env2
 ===
 
 [![Build Status](https://travis-ci.org/dwyl/env.svg)](https://travis-ci.org/dwyl/env)
@@ -6,57 +6,55 @@ Env - In your environment managing your variables.
 [![Code Climate](https://codeclimate.com/github/dwyl/env/badges/gpa.svg)](https://codeclimate.com/github/dwyl/env)
 [![Dependency Status](https://david-dm.org/dwyl/env.svg)](https://david-dm.org/dwyl/env)
 [![devDependency Status](https://david-dm.org/dwyl/env/dev-status.svg)](https://david-dm.org/dwyl/env#info=devDependencies)
-[![npm](https://img.shields.io/npm/v/env.svg)](https://www.npmjs.com/package/env)
+[![npm](https://img.shields.io/npm/v/env2.svg)](https://www.npmjs.com/package/env2)
 
-Managing environment variables can be a pain. Env helps make that better.
+## Why?
 
-### Module status
+Quoting [The Twelve Factor App](http://12factor.net/config) section 3:
 
-Env is an evolving project based which came out of discussions with [@joemccann](http://twitter.com/joemccann) and [@clintandrewhall](http://twitter.com/clintandrewhall). I don't consider this package fully baked yet.
+> "**Store config in the environment**"
 
-### Get Env.
+"*An app’s config is everything that is likely to vary between deploys
+(staging, production, developer environments, etc)*".
 
-```bash
-npm install env
-```
+This means we need a simple/reliable way of managing **environment variables**;
+**env2** *is* ***the way***.
 
-### Usage
+## What?
 
-Add an env.json file to your repo.
+env2 allows you to store your environment variables in a `env.json` file
+which gets loaded when your app starts.
 
-```json
+## How?
+
+First create an `env.json` file in your repo:
+
+```js
 {
-  "DB_HOST": 1,
-  "DB_PORT": 1,
-  "DB_USER": 1,
-  "DB_PASS": 1
+  "DB_HOST": "127.0.0.1",
+  "DB_PORT": 9200,
+  "DB_USER": "thisguy",
+  "DB_PASS": "password"
 }
 ```
+
+### Install from NPM
+
+Next install `env2` from npm and save it to your `package.json` file:
+
+```sh
+npm install env2 --save
+```
+
+### Use in your Code
+
+Then in your script:
 
 ```javascript
-var env = require('env')()
+var env = require('env2')('./path-to-your/env.json')
 
-env.ok(function(err) {
-  if (!err) return
-  console.error(err)
-  process.exit(1)
-})
-
-// Yes, it's SYNC, so you can do this too!
-
-function handleEnv (err) {
-  if (!err) return
-  process.exit(1)
-}
-
-if (env.ok(handleEnv)) {
-  var port = env.get('SETUP_PORT')
-  server.listen(port)
-}
+// your app goes here
+console.log(process.env.DB_HOST); // "127.0.0.1"
 ```
 
-Env is sync like require, so it's tasks can be accomplished before app execution.
-
-### Follow dshaw
-- [twitter.com/dshaw](http://twitter.com/dshaw)
-- [github.com/dshaw](http://github.com/dshaw)
+Env is synchronous; it loads all your config *before* app/script execution.
