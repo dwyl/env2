@@ -9,9 +9,7 @@ var ENVCOPY = {};
 
 test("Load env.json and confirm process.env.API_KEY is set", function(t) {
   require('../lib/env')(envfile);
-  // console.log(' - - - - - - - - - - - - - process.env ')
-  // console.log(process.env);
-  t.ok(process.env.API_KEY === "secret", 'worked')
+  t.ok(process.env.API_KEY === "secret", 'API_KEY loaded from env.json successfully!')
   t.end()
 });
 
@@ -29,16 +27,14 @@ test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.j
     console.log(envfile + ' NOT exist!')
     // do nothing!. if it failed that's fine!
   }
-  // make a copy of all the environment variables so we can restore them below
-  var keys = Object.keys(process.env)
-  keys.map(function(k) {
-    ENVCOPY[k] = process.env[k];
-    delete process.env[k];
+  Object.keys(process.env).map(function(k) {
+    delete process.env[k]; // DELETE all environment variables
   });
 
   decache('../lib/env');
-  require('../lib/env')(envfile); // this should spit out an error message now!
+  var env = require('../lib/env')(envfile); // this should spit out an ERROR msg
   // console.log(" - - - - - > " +process.env.GITHUB_CLIENT_ID);
+  t.ok(env.indexOf('could not find')>-1, "Could not find env.json file")
   t.ok(!process.env.API_KEY, "API_KEY environment variable NOT SET!");
   decache('../lib/env');
   t.end();
@@ -58,27 +54,26 @@ test("Force error by refencing non-existent env.json file", function(t) {
   t.end()
 });
 
-test("CREATE the env.json file from env.json_sample if it does not exist", function(t) {
+test("reCREATE the env.json file from env.json_sample if it does not exist", function(t) {
   setTimeout(function(){
-    // var fs      = require('fs');
-    // var path    = require('path');
-    // var envfile = path.resolve(__dirname + '/../env.json');
     try { // check the tempenv file was created from the previous test
-
-      // console.log(fs.lstatSync(tempenv).birthtime);
       fs.renameSync(tempenv, envfile); // restore the env.json from tempenv.json
     }
     catch (e) { // else create it from the _sample file!
       fs.createReadStream(envfile+'_sample').pipe(fs.createWriteStream(envfile));
     }
-    // require the ./lib/env.js and expect it to work!
     require('../lib/env')(envfile);
-    // restore environment variables from ENVCOPY for travis-ci ...
-    var keys = Object.keys(ENVCOPY);
-    keys.map(function(k){
-      process.env[k] = ENVCOPY[k];
-    });
+    // var keys = Object.keys(ENVCOPY);
+    // keys.map(function(k){
+    //   process.env[k] = ENVCOPY[k];
+    // });
     t.ok(process.env.API_KEY, "API_KEY environment variable is set!");
     t.end();
   },100);
+});
+
+test("Load env.json and confirm process.env.API_KEY is set", function(t) {
+  require('../lib/env')(envfile);
+  t.ok(process.env.API_KEY === "secret", 'API_KEY loaded from env.json successfully!')
+  t.end()
 });
