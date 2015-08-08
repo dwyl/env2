@@ -1,4 +1,4 @@
-env2 - the simplest configuration file loader
+env2 - environment variable loader
 ===
 
 [![Build Status](https://travis-ci.org/dwyl/env2.svg)](https://travis-ci.org/dwyl/env2)
@@ -10,7 +10,7 @@ env2 - the simplest configuration file loader
 
 ## Why?
 
-Quoting [The Twelve Factor App](http://12factor.net/config) section 3:
+[The Twelve Factor App](http://12factor.net/config) section 3 states:
 
 > "**Store config in the environment**"
 
@@ -22,15 +22,17 @@ This means we need a simple/reliable way of managing **environment variables**;
 
 ## What?
 
-env2 allows you to store your environment variables in an `env.json` file
+**env2** allows you to store your environment variables in an `env.json` file
 which gets loaded when your app starts.
 
-All the entries in the `env.json` file are available as keys in
-the `process.env` object.
+All the entries in the `env.json` file are exported as environment variables
+available as keys in the `process.env` object.
 
 ## How?
 
-First create an `env.json` file in your repo:
+### Create your `env.json` Configuration File
+
+*First* **create** an `env.json` file in your repo:
 
 ```js
 {
@@ -40,7 +42,7 @@ First create an `env.json` file in your repo:
   "DB_PASS": "password"
 }
 ```
-if you don't want your `env.json` to be in your version control
+*If* you don't want your `env.json` to be in your version control
 (i.e. _visible on GitHub_) simply *add* the filename to your `.gitignore` file:
 
 ```sh
@@ -49,7 +51,7 @@ echo 'env.json' >> .gitignore
 
 ### Install from NPM
 
-Next install `env2` from npm and save it to your `package.json` file:
+Next **install** `env2` from npm and save it to your `package.json` file:
 
 ```sh
 npm install env2 --save
@@ -66,7 +68,7 @@ var env = require('env2')('./path-to-your/env.json')
 console.log(process.env.DB_HOST); // "127.0.0.1"
 ```
 
-now all the entries in your `env.json` file become available as
+now all the entries in your `env.json` file are available as
 keys/values of the `process.env` Object which means you can use
 `process.env.API_KEY` or `process.env.DB_PASSWORD` in your script.
 (*or what ever you have defined as entries in your* `env.json`)
