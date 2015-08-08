@@ -1,11 +1,11 @@
 env2
 ===
 
-[![Build Status](https://travis-ci.org/dwyl/env.svg)](https://travis-ci.org/dwyl/env)
-[![Test Coverage](https://codeclimate.com/github/dwyl/env/badges/coverage.svg)](https://codeclimate.com/github/dwyl/env/coverage)
-[![Code Climate](https://codeclimate.com/github/dwyl/env/badges/gpa.svg)](https://codeclimate.com/github/dwyl/env)
-[![Dependency Status](https://david-dm.org/dwyl/env.svg)](https://david-dm.org/dwyl/env)
-[![devDependency Status](https://david-dm.org/dwyl/env/dev-status.svg)](https://david-dm.org/dwyl/env#info=devDependencies)
+[![Build Status](https://travis-ci.org/dwyl/env2.svg)](https://travis-ci.org/dwyl/env2)
+[![Test Coverage](https://codeclimate.com/github/dwyl/env2/badges/coverage.svg)](https://codeclimate.com/github/dwyl/env2/coverage)
+[![Code Climate](https://codeclimate.com/github/dwyl/env2/badges/gpa.svg)](https://codeclimate.com/github/dwyl/env2)
+[![Dependency Status](https://david-dm.org/dwyl/env2.svg)](https://david-dm.org/dwyl/env2)
+[![devDependency Status](https://david-dm.org/dwyl/env2/dev-status.svg)](https://david-dm.org/dwyl/env2#info=devDependencies)
 [![npm](https://img.shields.io/npm/v/env2.svg)](https://www.npmjs.com/package/env2)
 
 ## Why?
@@ -86,6 +86,9 @@ your app is running (or via command-line arguments) will take
 precendence over the same key in your `env.json` file ... if you prefer
 to have the option to *specify* the priority, please add a comment to the isssue:
 https://github.com/dwyl/env2/issues/1
+
+
+<br />
 
 ## Name ?
 
