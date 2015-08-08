@@ -1,4 +1,4 @@
-env2
+env2 - the simplest configuration file loader
 ===
 
 [![Build Status](https://travis-ci.org/dwyl/env2.svg)](https://travis-ci.org/dwyl/env2)
@@ -66,6 +66,12 @@ var env = require('env2')('./path-to-your/env.json')
 console.log(process.env.DB_HOST); // "127.0.0.1"
 ```
 
+now all the entries in your `env.json` file become available as
+keys/values of the `process.env` Object which means you can use
+`process.env.API_KEY` or `process.env.DB_PASSWORD` in your script.
+(*or what ever you have defined as entries in your* `env.json`)
+
+
 Env is synchronous; it loads all your configuration variables into the
 `process.env` object *before* app/script execution.
 
@@ -77,9 +83,9 @@ Do you want the ability to *specify* the priority which
 environment variables take precendence?
 e.g: if you supply a command-line argument when running your script/app:
 ```sh
-evn=PROD API_KEY=token.dwyl.yolo node myapp.js
+env=PROD API_KEY=token.dwyl.yolo node myapp.js
 ```
-We have an open discussion around this: https://github.com/dwyl/env2/issues/1
+We have an *open discussion* on this: https://github.com/dwyl/env2/issues/1
 
 At present, any environment variable defined in the environment where
 your app is running (or via command-line arguments) will take
