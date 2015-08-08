@@ -2,23 +2,29 @@
   "name": "env2",
   "version": "1.0.2",
   "description": "Environment variable loader",
-  "keywords": ["process", "environment", "env"],
-  "author":"Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
+  "keywords": [
+    "env",
+    "environment",
+    "variables",
+    "config"
+  ],
+  "author": "Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
   "inspired-by": "https://github.com/dshaw/env (unmaintained/unloved! see: http://git.io/vOjWp)",
   "repository": {
     "type": "git",
     "url": "https://github.com/dwyl/env2"
   },
-  "issues":{
+  "issues": {
     "url": "https://github.com/dwyl/env2/issues"
   },
   "main": "index",
-  "directories" : {
-    "lib" : "lib",
-    "test" : "test"
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   },
   "devDependencies": {
     "codeclimate-test-reporter": "0.1.0",
+    "decache": "^3.0.3",
     "istanbul": "^0.3.17",
     "pre-commit": "1.0.10",
     "tape": "^4.0.0"
@@ -26,13 +32,14 @@
   "scripts": {
     "test": "istanbul cover tape ./test/*.js",
     "coverage": "istanbul cover tape ./test/env.test.js",
-    "check-coverage" : "istanbul cover tape ./test/*.js && istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "check-coverage": "istanbul cover tape ./test/*.js && istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "codeclimate": "CODECLIMATE_REPO_TOKEN=f668cba404201cc8642098b370e1cd50f3300248e427d208b1c22dc98546f2cc ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info"
   },
   "pre-commit": [
-      "check-coverage",
-      "codeclimate"
+    "check-coverage",
+    "codeclimate"
   ],
-  "engines": { "node": ">= 0.10.0" },
-  "keywords": [ "env", "environment", "variables", "config" ]
+  "engines": {
+    "node": ">= 0.10.0"
+  }
 }
