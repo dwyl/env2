@@ -1,6 +1,6 @@
 {
   "name": "env2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Environment variable loader",
   "keywords": ["process", "environment", "env"],
   "author":"Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
@@ -27,7 +27,7 @@
     "test": "istanbul cover tape ./test/*.js",
     "coverage": "istanbul cover tape ./test/env.test.js",
     "check-coverage" : "istanbul cover tape ./test/*.js && istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
-    "codeclimate": "CODECLIMATE_REPO_TOKEN=5eff89a1f915b11bf7665cf239a7cb9d972d93e8bd2604f67429ba946b5f06ee ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info"
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=f668cba404201cc8642098b370e1cd50f3300248e427d208b1c22dc98546f2cc ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info"
   },
   "pre-commit": [
       "check-coverage",
