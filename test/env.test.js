@@ -3,14 +3,15 @@ var fs      = require('fs');
 var path    = require('path');
 var envfile = path.resolve(__dirname + '/../env.json');
 var sample  = path.resolve(__dirname + '/../env.json_sample');
+var dotenv  = path.resolve(__dirname + '/../.env');
 var tempenv = './tempenv.json';
 var decache = require('decache');
 var ENVCOPY = {};
 
 test("Load env.json and confirm process.env.API_KEY is set", function(t) {
   require('../lib/env')(envfile);
-  t.ok(process.env.API_KEY === "secret", 'API_KEY loaded from env.json successfully!')
-  t.end()
+  t.ok(process.env.API_KEY === "secret", 'API_KEY loaded from env.json successfully!');
+  t.end();
 });
 
 test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.js", function(t) {
@@ -24,7 +25,7 @@ test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.j
     }
   }
   catch (e) {
-    console.log(envfile + ' NOT exist!')
+    console.log(envfile + ' NOT exist!');
     // do nothing!. if it failed that's fine!
   }
   Object.keys(process.env).map(function(k) {
@@ -34,7 +35,7 @@ test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.j
   decache('../lib/env');
   var env = require('../lib/env')(envfile); // this should spit out an ERROR msg
   // console.log(" - - - - - > " +process.env.GITHUB_CLIENT_ID);
-  t.ok(env.indexOf('could not find')>-1, "Could not find env.json file")
+  t.ok(env.indexOf('could not find')>-1, "Could not find env.json file");
   t.ok(!process.env.API_KEY, "API_KEY environment variable NOT SET!");
   decache('../lib/env');
   t.end();
@@ -43,15 +44,15 @@ test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.j
 test("Call env() without specifying an env.json file! (failure test)", function(t) {
   decache('../lib/env');
   require('../lib/env')();
-  t.ok(!process.env.API_KEY, 'API_KEY is not set (as expected)')
-  t.end()
+  t.ok(!process.env.API_KEY, 'API_KEY is not set (as expected)');
+  t.end();
 });
 
 test("Force error by refencing non-existent env.json file", function(t) {
   decache('../lib/env');
   require('../lib/env')('./env.json');
-  t.ok(!process.env.API_KEY, 'API_KEY is not set (as expected)')
-  t.end()
+  t.ok(!process.env.API_KEY, 'API_KEY is not set (as expected)');
+  t.end();
 });
 
 test("reCREATE the env.json file from env.json_sample if it does not exist", function(t) {
@@ -74,6 +75,12 @@ test("reCREATE the env.json file from env.json_sample if it does not exist", fun
 
 test("Load env.json and confirm process.env.API_KEY is set", function(t) {
   require('../lib/env')(envfile);
-  t.ok(process.env.API_KEY === "secret", 'API_KEY loaded from env.json successfully!')
-  t.end()
+  t.ok(process.env.API_KEY === "secret", 'API_KEY loaded from env.json successfully!');
+  t.end();
+});
+
+test("Passing a .env file ", function (t) {
+  require('../lib/env')(dotenv);
+  t.ok(process.env.DOT_KEY === 'dots_rule', 'we were able to load in a .env!');
+  t.end();
 });
