@@ -49,7 +49,7 @@ available as keys in the `process.env` object.
 echo 'env.json' >> .gitignore
 ```
 
-#### Alernative: `.env` File
+#### Alternative: `.env` File
 
 Another standard for storing environment variables is a `.env` file. This is a
 list of variables of the following form. This a very explicit way of listing
