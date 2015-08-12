@@ -51,8 +51,12 @@ echo 'env.json' >> .gitignore
 
 #### Alernative: `.env` File
 
-Files ending in the `.env` extension are also supported. They should be
-formatted as:
+Another standard for storing environment variables is a `.env` file. This is a
+list of variables of the following form. This a very explicit way of listing
+environment variables, without the extra syntax of a JSON. It also allows for
+easier copying and pasting into the terminal (as, with an `export` keyword
+prepended to each line) this is a list of \*sh commands to export
+environment variables.
 
 ```bash
 DB_HOST=127.0.0.1
@@ -61,8 +65,10 @@ DB_USER=anon
 DB_PASS=password
 ```
 
-Not the **lack of spaces**. You may leave blank lines to organise the file if
-you wish. Follow the **instructions above** for placing it in your gitignore.
+
+Note the **lack of spaces**. You may leave blank lines and insert comments
+(starting with '#') to organise the file if you wish. Follow the **instructions
+above** for placing it in your gitignore.
 
 ### Install from NPM
 
