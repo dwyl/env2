@@ -4,6 +4,7 @@ var path    = require('path');
 var envfile = path.resolve(__dirname + '/../env.json');
 var sample  = path.resolve(__dirname + '/../env.json_sample');
 var dotenv  = path.resolve(__dirname + '/../.env');
+var newenv  = path.resolve(__dirname + '/../new.env');
 var tempenv = './tempenv.json';
 var decache = require('decache');
 var ENVCOPY = {};
@@ -83,4 +84,20 @@ test("Passing a .env file ", function (t) {
   require('../lib/env')(dotenv);
   t.ok(process.env.DOT_KEY === 'dots_rule', 'we were able to load in a .env!');
   t.end();
+});
+
+test("A .env file with comments exports the correct variables and ignores comments", function (t) {
+  var new_env = fs.createWriteStream(newenv);
+  var env_contents = "COMMENT_KEY=Available \n" +
+      "\n" +
+      "#COMMENTED_OUT=IGNORED \n" +
+      "NEXT_KEY=fine";
+  new_env.end(env_contents, function(){
+    require('../lib/env')(newenv);
+    t.ok(process.env.COMMENT_KEY === 'Available', 'first key without comment loaded in');
+    t.ok(!process.env.COMMENTED_OUT, 'commented out comment is not exported');
+    t.ok(process.env.NEXT_KEY === 'fine', 'key after comment is still exported');
+    fs.unlink(newenv);
+    t.end();
+  });
 });
