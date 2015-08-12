@@ -22,10 +22,10 @@ This means we need a simple/reliable way of managing **environment variables**;
 
 ## What?
 
-**env2** allows you to store your environment variables in an `env.json` file
-which gets loaded when your app starts.
+**env2** allows you to store your environment variables in an `env.json` or a
+`.env` file which gets loaded when your app starts.
 
-All the entries in the `env.json` file are exported as environment variables
+All the entries in the `env` file are exported as environment variables
 available as keys in the `process.env` object.
 
 ## How?
@@ -49,6 +49,27 @@ available as keys in the `process.env` object.
 echo 'env.json' >> .gitignore
 ```
 
+#### Alternative: `.env` File
+
+Another standard for storing environment variables is a `.env` file. This is a
+list of variables of the following form. This a very explicit way of listing
+environment variables, without the extra syntax of a JSON. It also allows for
+easier copying and pasting into the terminal (as, with an `export` keyword
+prepended to each line) this is a list of \*sh commands to export
+environment variables.
+
+```bash
+DB_HOST=127.0.0.1
+DB_PORT=9200
+DB_USER=anon
+DB_PASS=password
+```
+
+
+Note the **lack of spaces**. You may leave blank lines and insert comments
+(starting with '#') to organise the file if you wish. Follow the **instructions
+above** for placing it in your gitignore.
+
 ### Install from NPM
 
 Next **install** `env2` from npm and save it to your `package.json` file:
@@ -62,13 +83,13 @@ npm install env2 --save
 Then in your script/module:
 
 ```javascript
-var env = require('env2')('./path-to-your/env.json')
+var env = require('env2')('./path-to-your/env.file')
 
 // your app goes here
 console.log(process.env.DB_HOST); // "127.0.0.1"
 ```
 
-now all the entries in your `env.json` file are available as
+now all the entries in your `env.json` or `.env` file are available as
 keys/values of the `process.env` Object which means you can use
 `process.env.API_KEY` or `process.env.DB_PASSWORD` in your script.
 (*or what ever you have defined as entries in your* `env.json`)
