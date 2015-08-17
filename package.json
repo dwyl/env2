@@ -1,6 +1,6 @@
 {
   "name": "env2",
-  "version": "1.0.6",
+  "version": "2.0.0",
   "description": "Environment variable loader",
   "keywords": [
     "env",
@@ -9,6 +9,12 @@
     "config"
   ],
   "author": "Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
+  "contributors": [
+    {
+      "name": "Rafe Kennedy",
+      "email": "@rjmk <contact.rafe@gmail.com>"
+    }
+  ],
   "inspired-by": "https://github.com/dshaw/env (unmaintained/unloved! see: http://git.io/vOjWp)",
   "repository": {
     "type": "git",
