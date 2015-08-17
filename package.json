@@ -23,7 +23,7 @@
   "issues": {
     "url": "https://github.com/dwyl/env2/issues"
   },
-  "main": "index",
+  "main": "lib/env.js",
   "directories": {
     "lib": "lib",
     "test": "test"

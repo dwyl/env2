@@ -1,12 +1,15 @@
 var test    = require('tape');
 var fs      = require('fs');
 var path    = require('path');
+var decache = require('decache');
 var envfile = path.resolve(__dirname + '/../env.json');
+// decache(envfile);
 var sample  = path.resolve(__dirname + '/../env.json_sample');
+// decache(sample);
 var dotenv  = path.resolve(__dirname + '/../.env');
+// decache(dotenv);
 var newenv  = path.resolve(__dirname + '/../new.env');
 var tempenv = './tempenv.json';
-var decache = require('decache');
 var ENVCOPY = {};
 
 test("Load env.json and confirm process.env.API_KEY is set", function(t) {
@@ -101,3 +104,8 @@ test("A .env file with comments exports the correct variables and ignores commen
     t.end();
   });
 });
+
+test('node_modules test', function(t){
+  require('./node_modules/parent.test.js'); // executes file inside "fake" node_modules
+  t.end();
+})
