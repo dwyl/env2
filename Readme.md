@@ -30,9 +30,15 @@ available as keys in the `process.env` object.
 
 ## How?
 
+> Need help getting started? [![Join the chat at https://gitter.im/dwyl/chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dwyl/chat/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ### Create your `env.json` Configuration File
 
 *First* **create** an `env.json` file in your repo:
+
+> **Tip**: Create your `env.json` or `config.env` (or just `.env`) file
+in the `root` of your project and _don't forget_ to add it to your `.gitignore`to
+avoid _accidentally_ committing it to GitHub where bad people will steal your secrets!
 
 ```js
 {
@@ -51,12 +57,13 @@ echo 'env.json' >> .gitignore
 
 #### Alternative: `.env` File
 
-Another standard for storing environment variables is a `.env` file. This is a
-list of variables of the following form. This a very explicit way of listing
-environment variables, without the extra syntax of a JSON. It also allows for
-easier copying and pasting into the terminal (as, with an `export` keyword
-prepended to each line) this is a list of \*sh commands to export
-environment variables.
+Another standard for storing environment variables is a `.env` file.
+This is a list of variables of the following form.
+This a very explicit way of listing environment variables,
+without the extra syntax (_potential human/input error_) of a JSON file.
+It also allows for easier copying and pasting into the terminal
+(as, with an `export` keyword prepended to each line) this is a list
+of \*sh commands to export environment variables.
 
 ```bash
 DB_HOST=127.0.0.1
@@ -64,7 +71,6 @@ DB_PORT=9200
 DB_USER=anon
 DB_PASS=password
 ```
-
 
 Note the **lack of spaces**. You may leave blank lines and insert comments
 (starting with '#') to organise the file if you wish. Follow the **instructions
@@ -83,7 +89,7 @@ npm install env2 --save
 Then in your script/module:
 
 ```javascript
-var env = require('env2')('./path-to-your/env.file')
+var env = require('env2')('./path-to-your/config.env')
 
 // your app goes here
 console.log(process.env.DB_HOST); // "127.0.0.1"
