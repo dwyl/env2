@@ -15,7 +15,7 @@
       "email": "@rjmk <contact.rafe@gmail.com>"
     }
   ],
-  "inspired-by": "https://github.com/dshaw/env (unmaintained/unloved! see: http://git.io/vOjWp)",
+  "inspired-by": "https://github.com/dshaw/env (see: http://git.io/vOjWp)",
   "repository": {
     "type": "git",
     "url": "https://github.com/dwyl/env2"
@@ -33,7 +33,7 @@
     "decache": "^3.0.3",
     "istanbul": "^0.3.17",
     "pre-commit": "1.0.10",
-    "tape": "^4.0.0"
+    "tape": "^4.2.0"
   },
   "scripts": {
     "test": "istanbul cover tape ./test/*.js",

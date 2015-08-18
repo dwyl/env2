@@ -105,7 +105,12 @@ test("A .env file with comments exports the correct variables and ignores commen
   });
 });
 
-test('node_modules test', function(t){
-  require('./node_modules/parent.test.js'); // executes file inside "fake" node_modules
+test('node_modules test with config.env supplied as argument', function(t){
+  require('./node_modules/callee.test.js'); // executes file inside "fake" node_modules
+  t.end();
+})
+
+test('node_modules test WITHOUT a filename argument', function(t){
+  require('./node_modules/callee_noarg.test.js'); // executes file inside "fake" node_modules
   t.end();
 })
