@@ -39,7 +39,7 @@ test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.j
   decache('../lib/env');
   var env = require('../lib/env')(envfile); // this should spit out an ERROR msg
   // console.log(" - - - - - > " +process.env.GITHUB_CLIENT_ID);
-  t.ok(env.indexOf('could not find')>-1, "Could not find env.json file");
+  t.ok(env.indexOf('no such file or directory')>-1, "Could not find env.json file");
   t.ok(!process.env.API_KEY, "API_KEY environment variable NOT SET!");
   decache('../lib/env');
   t.end();
