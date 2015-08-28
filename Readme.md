@@ -10,15 +10,16 @@ env2 - environment variable loader
 
 ## Why?
 
-[The Twelve Factor App](http://12factor.net/config) section 3 states:
+**Environment variables** are the best way of storing sensitive data
+like API Keys, Login Credentials and Database Passwords.
 
-> "**Store config in the environment**"
+> If you are *new* to ***environment variables***
+please checkout our ***introduction for complete beginners***:
+https://github.com/dwyl/learn-environment-variables
 
-"*An app’s config is everything that is likely to vary between deploys
-(staging, production, developer environments, etc)*".
-
-This means we need a simple/reliable way of managing **environment variables**;
-**env2** *is* ***the way***.
+We needed a simple/reliable way of managing **environment variables**;
+and being able to share a configuration file among the team
+(_without committing it to GitHub_!) **env2** is our *solution*.
 
 ## What?
 
@@ -131,6 +132,15 @@ https://github.com/dwyl/env2/issues/1
 
 
 <br />
+## Huh?
+
+[The Twelve Factor App](http://12factor.net/config) section 3 states:
+
+> "**Store config in the environment**"
+
+"*An app’s config is everything that is likely to vary between deploys
+(staging, production, developer environments, etc)*".
+
 
 ## Name ?
 
@@ -142,9 +152,10 @@ We asked Dan if he would accept a Pull Request updating the package:
 https://github.com/dshaw/env/issues/6 and he said he *would* accept it ...
 But after investing the time and submitting the pull request:
 https://github.com/dshaw/env/pull/8 which updated the package to the latest
-version of Node/io.js and had tests & 100% coverage, the PR got ignored.
+version of Node/io.js and had tests with 100% coverage, the PR got ignored.
 see: https://twitter.com/dshaw/status/628237150253772801
 Not that we're "_impatient_" but we need to move on with our code/lives.
-If the PR to env ever gets merged, we *could* use that instead,
-but actually **env2** is ***much simpler*** and servers our needs better,
-so we are probably going to stick with the "***New and Improved***" Version.
+That's why we wrote **env2**.
+
+We have since added better error handling and alternative file types,
+so **env2** is can be considered the "***New & Improved Version***"
