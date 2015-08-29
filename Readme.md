@@ -10,15 +10,16 @@ env2 - environment variable loader
 
 ## Why?
 
-[The Twelve Factor App](http://12factor.net/config) section 3 states:
+**Environment variables** are the best way of storing sensitive data
+like API Keys, Login Credentials and Database Passwords.
 
-> "**Store config in the environment**"
+> If you are *new* to ***environment variables***
+please checkout our ***introduction for complete beginners***:
+https://github.com/dwyl/learn-environment-variables
 
-"*An app’s config is everything that is likely to vary between deploys
-(staging, production, developer environments, etc)*".
-
-This means we need a simple/reliable way of managing **environment variables**;
-**env2** *is* ***the way***.
+We needed a simple/reliable way of managing **environment variables**;
+and being able to share a configuration file among the team
+(_without committing it to GitHub_!) **env2** is our *solution*.
 
 ## What?
 
@@ -32,40 +33,18 @@ available as keys in the `process.env` object.
 
 > Need help getting started? [![Join the chat at https://gitter.im/dwyl/chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dwyl/chat/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Create your `env.json` Configuration File
+### Create a `config.env` File
 
-*First* **create** an `env.json` file in your repo:
+We use (*and recommend*) `.env` files for environment configuration.  
+We call our file `config.env` for *cross-project consistency*.  
+A `config.env` file is a very explicit way of listing environment variables
+without the extra syntax (_potential human/input error_) of a JSON file.
+It also allows for easier copy-pasting into the terminal
+(with an `export` keyword prepended to each line).
 
-> **Tip**: Create your `env.json` or `config.env` (or just `.env`) file
-in the `root` of your project and _don't forget_ to add it to your `.gitignore`to
-avoid _accidentally_ committing it to GitHub where bad people will steal your secrets!
-
-```js
-{
-  "DB_HOST": "127.0.0.1",
-  "DB_PORT": 9200,
-  "DB_USER": "anon",
-  "DB_PASS": "password"
-}
-```
-*If* you don't want your `env.json` to be in your version control
-(i.e. _visible on GitHub_) simply *add* the filename to your `.gitignore` file:
+The format of a `config.env` file is:
 
 ```sh
-echo 'env.json' >> .gitignore
-```
-
-#### Alternative: `.env` File
-
-Another standard for storing environment variables is a `.env` file.
-This is a list of variables of the following form.
-This a very explicit way of listing environment variables,
-without the extra syntax (_potential human/input error_) of a JSON file.
-It also allows for easier copying and pasting into the terminal
-(as, with an `export` keyword prepended to each line) this is a list
-of \*sh commands to export environment variables.
-
-```bash
 DB_HOST=127.0.0.1
 DB_PORT=9200
 DB_USER=anon
@@ -75,6 +54,35 @@ DB_PASS=password
 Note the **lack of spaces**. You may leave blank lines and insert comments
 (starting with '#') to organise the file if you wish. Follow the **instructions
 above** for placing it in your gitignore.
+
+### *Alternatively* Create an `env.json` Configuration File
+
+If you *prefer* to use `.json` instead of `.env` create a `config.json` file in your repo with the following format:
+
+```js
+{
+  "DB_HOST": "127.0.0.1",
+  "DB_PORT": 9200,
+  "DB_USER": "anon",
+  "DB_PASS": "password"
+}
+```
+
+### Always `.gitignore` your configuration file
+
+***Always*** create your `config.env` or `env.json` file
+in the ***root directory*** of your project and _don't forget_ to add it to your `.gitignore`to
+avoid _accidentally_ committing your keys/passwords to GitHub where bad people can (*will*) steal your secrets!
+
+e.g:
+```sh
+echo 'config.env' >> .gitignore
+```
+or
+```sh
+echo 'env.json' >> .gitignore
+```
+
 
 ### Install from NPM
 
@@ -124,6 +132,15 @@ https://github.com/dwyl/env2/issues/1
 
 
 <br />
+## Huh?
+
+[The Twelve Factor App](http://12factor.net/config) section 3 states:
+
+> "**Store config in the environment**"
+
+"*An app’s config is everything that is likely to vary between deploys
+(staging, production, developer environments, etc)*".
+
 
 ## Name ?
 
@@ -135,9 +152,10 @@ We asked Dan if he would accept a Pull Request updating the package:
 https://github.com/dshaw/env/issues/6 and he said he *would* accept it ...
 But after investing the time and submitting the pull request:
 https://github.com/dshaw/env/pull/8 which updated the package to the latest
-version of Node/io.js and had tests & 100% coverage, the PR got ignored.
+version of Node/io.js and had tests with 100% coverage, the PR got ignored.
 see: https://twitter.com/dshaw/status/628237150253772801
 Not that we're "_impatient_" but we need to move on with our code/lives.
-If the PR to env ever gets merged, we *could* use that instead,
-but actually **env2** is ***much simpler*** and servers our needs better,
-so we are probably going to stick with the "***New and Improved***" Version.
+That's why we wrote **env2**.
+
+We have since added better error handling and alternative file types,
+so **env2** is can be considered the "***New & Improved Version***"
