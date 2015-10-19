@@ -76,6 +76,17 @@ test("Passing a .env file ", function (t) {
   t.end();
 });
 
+test("An .env file with spaces in the definition should work", function (t) {
+  var new_env = fs.createWriteStream(newenv);
+  var env_contents = "A_KEY = thing";
+  new_env.end(env_contents, function () {
+    require('../lib/env')(newenv);
+    t.ok(process.env.A_KEY, 'thing');
+    fs.unlink(newenv);
+    t.end();
+  })
+})
+
 test("A .env file with comments exports the correct variables and ignores comments", function (t) {
   var new_env = fs.createWriteStream(newenv);
   var env_contents = "COMMENT_KEY=Available \n" +
