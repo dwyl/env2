@@ -53,7 +53,7 @@ DB_PASS=password
 
 Note the **lack of spaces**. You may leave blank lines and insert comments
 (starting with '#') to organise the file if you wish. Follow the **instructions
-above** for placing it in your gitignore.
+below** for placing it in your `.gitignore` file.
 
 ### *Alternatively* Create an `env.json` Configuration File
 
