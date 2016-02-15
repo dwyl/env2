@@ -37,6 +37,8 @@ available as keys in the `process.env` object.
 
 We use (*and recommend*) `.env` files for environment configuration.  
 We call our file `config.env` for *cross-project consistency*.  
+(*but you can call your file what ever you like e.g*: `.env`)  
+
 A `config.env` file is a very explicit way of listing environment variables
 without the extra syntax (_potential human/input error_) of a JSON file.
 It also allows for easier copy-pasting into the terminal
@@ -45,13 +47,13 @@ It also allows for easier copy-pasting into the terminal
 The format of a `config.env` file is:
 
 ```sh
-DB_HOST=127.0.0.1
-DB_PORT=9200
-DB_USER=anon
-DB_PASS=password
+export DB_HOST=127.0.0.1
+export DB_PORT=9200
+export DB_USER=anon
+export DB_PASS=password
 ```
 
-Note the **lack of spaces**. You may leave blank lines and insert comments
+> Note the **lack of _spaces_**. You may leave blank lines and insert comments
 (starting with '#') to organise the file if you wish. Follow the **instructions
 below** for placing it in your `.gitignore` file.
 
@@ -68,7 +70,7 @@ If you *prefer* to use `.json` instead of `.env` create a `config.json` file in 
 }
 ```
 
-### Always `.gitignore` your configuration file
+### *Always* `.gitignore` your configuration file
 
 ***Always*** create your `config.env` or `env.json` file
 in the ***root directory*** of your project and _don't forget_ to add it to your `.gitignore`to
@@ -78,7 +80,7 @@ e.g:
 ```sh
 echo 'config.env' >> .gitignore
 ```
-or
+***or***
 ```sh
 echo 'env.json' >> .gitignore
 ```
@@ -117,7 +119,7 @@ Env is synchronous; it loads all your configuration variables into the
 ## Do you want to Define Priority for Variables?
 
 Do you want the ability to *specify* the priority which
-environment variables take precendence?
+environment variables take precendence?  
 e.g: if you supply a command-line argument when running your script/app:
 ```sh
 env=PROD API_KEY=token.dwyl.yolo node myapp.js
@@ -141,6 +143,7 @@ https://github.com/dwyl/env2/issues/1
 "*An app’s config is everything that is likely to vary between deploys
 (staging, production, developer environments, etc)*".
 
+<br />
 
 ## Name ?
 
