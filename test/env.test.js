@@ -119,3 +119,15 @@ test('node_modules test WITHOUT a filename argument', function(t){
   require('./node_modules/callee_noarg.test.js'); // executes file inside "fake" node_modules
   t.end();
 })
+
+var config  = path.resolve(__dirname + '/../config.env');
+require('../lib/env.js')(config); // local
+
+// this ensures that the node_modules condition in lib/env.js is met
+test("Confirm that EVERYTHING=AWESOME", function(t) {
+  t.ok(process.env.EVERYTHING === 'AWESOME',
+  'Worked! Everything is: '+process.env.EVERYTHING)
+  t.ok(process.env.BUILD === 'SPACESHIP',
+  'What do we want to build? ...> '+process.env.BUILD + ' !!! :-)');
+  t.end();
+});
