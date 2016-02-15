@@ -1,12 +1,14 @@
 {
   "name": "env2",
   "version": "2.0.5",
-  "description": "Environment variable loader",
+  "description": "Environment Variable Loader",
   "keywords": [
     "env",
     "environment",
     "variables",
-    "config"
+    "config",
+    "aws",
+    "lambda"
   ],
   "author": "Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
   "contributors": [
@@ -34,13 +36,12 @@
   },
   "devDependencies": {
     "decache": "^3.0.3",
-    "istanbul": "^0.4.0",
-    "pre-commit": "^1.1.1",
-    "tape": "^4.2.1"
+    "istanbul": "^0.4.2",
+    "pre-commit": "^1.1.2",
+    "tape": "^4.4.0"
   },
   "scripts": {
     "test": "istanbul cover tape ./test/*.js",
-    "coverage": "istanbul cover tape ./test/env.test.js",
     "check-coverage": "istanbul cover tape ./test/*.js && istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100"
   },
   "pre-commit": [
