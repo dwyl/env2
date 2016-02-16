@@ -1,10 +1,13 @@
 var test    = require('tape');
 var fs      = require('fs');
 var path    = require('path');
-var decache = require('decache');
-var envfile = path.resolve(__dirname + '/../env.json');
-var sample  = path.resolve(__dirname + '/../env.json_sample');
-var dotenv  = path.resolve(__dirname + '/../.env');
+var decache = require('decache'); //
+var envfile = path.resolve(__dirname + '/fixtures/env.json');
+// console.log(envfile);
+// console.log(' - - - - - - - - - - - ');
+// return;
+var sample  = path.resolve(__dirname + '/fixtures/env.json_sample');
+var dotenv  = path.resolve(__dirname + '/fixtures/.env');
 var newenv  = path.resolve(__dirname + '/../new.env');
 var tempenv = './tempenv.json';
 var ENVCOPY = {};
@@ -41,11 +44,15 @@ test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.j
 test("Call env() without specifying an env.json file! (failure test)", function(t) {
   require('../lib/env')();
   t.ok(!process.env.API_KEY, 'API_KEY is not set (as expected)');
+  // delete all environment variables before next test:
+  Object.keys(process.env).forEach(function(key){
+    delete process.env[key];
+  });
   t.end();
 });
 
 test("Force error by refencing non-existent env.json file", function(t) {
-  require('../lib/env')('./env.json');
+  require('../lib/env')('./node_modules/env.json');
   t.ok(!process.env.API_KEY, 'API_KEY is not set (as expected)');
   t.end();
 });
@@ -112,3 +119,15 @@ test('node_modules test WITHOUT a filename argument', function(t){
   require('./node_modules/callee_noarg.test.js'); // executes file inside "fake" node_modules
   t.end();
 })
+
+var config  = path.resolve(__dirname + '/../config.env');
+require('../lib/env.js')(config); // local
+
+// this ensures that the node_modules condition in lib/env.js is met
+test("Confirm that EVERYTHING=AWESOME", function(t) {
+  t.ok(process.env.EVERYTHING === 'AWESOME',
+  'Worked! Everything is: '+process.env.EVERYTHING)
+  t.ok(process.env.BUILD === 'SPACESHIP',
+  'What do we want to build? ...> '+process.env.BUILD + ' !!! :-)');
+  t.end();
+});
