@@ -83,6 +83,12 @@ test("Passing a .env file ", function (t) {
   t.end();
 });
 
+test("A .env file with equals in the variable value works", function (t) {
+  require('../lib/env')(dotenv);
+  t.equal(process.env.KEY_WITH_EQUALS, 'http://foo.bar/?baz=quux', 'values with "=" work!');
+  t.end();
+});
+
 test("An .env file with spaces in the definition should work", function (t) {
   var new_env = fs.createWriteStream(newenv);
   var env_contents = "A_KEY = thing";
