@@ -1,12 +1,13 @@
 {
   "name": "env2",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Environment Variable Loader",
   "keywords": [
     "env",
     "environment",
     "variables",
     "config",
+    "file",
     "aws",
     "lambda"
   ],
@@ -35,10 +36,10 @@
     "test": "test"
   },
   "devDependencies": {
-    "decache": "^3.0.3",
-    "istanbul": "^0.4.2",
-    "pre-commit": "^1.1.2",
-    "tape": "^4.4.0"
+    "decache": "^3.0.5",
+    "istanbul": "^0.4.3",
+    "pre-commit": "^1.1.3",
+    "tape": "^4.5.1"
   },
   "scripts": {
     "test": "istanbul cover tape ./test/*.js",

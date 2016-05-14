@@ -36,7 +36,7 @@ test("TEMPORARILY RENAME env.json file to force the try/catch error in lib/env.j
 
   decache('../lib/env'); // need to clear require cache!
   var env = require('../lib/env')(envfile); // this should spit out an ERROR msg
-  t.ok(env.indexOf('no such file or directory')>-1, "Could not find env.json file");
+  t.ok(env.indexOf('NOT FOUND!')>-1, "Could not find env.json file");
   t.ok(!process.env.API_KEY, "API_KEY environment variable NOT SET!");
   t.end();
 });

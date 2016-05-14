@@ -33,18 +33,18 @@ available as keys in the `process.env` object.
 
 > Need help getting started? [![Join the chat at https://gitter.im/dwyl/chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dwyl/chat/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Create a `config.env` File
+### Create a `.env` File
 
 We use (*and recommend*) `.env` files for environment configuration.  
-We call our file `config.env` for *cross-project consistency*.  
+We call our file `.env` for *cross-project consistency*.  
 (*but you can call your file what ever you like e.g*: `.env`)  
 
-A `config.env` file is a very explicit way of listing environment variables
+A `.env` file is a very explicit way of listing environment variables
 without the extra syntax (_potential human/input error_) of a JSON file.
 It also allows for easier copy-pasting into the terminal
 (with an `export` keyword prepended to each line).
 
-The format of a `config.env` file is:
+The format of a `.env` file is:
 
 ```sh
 export DB_HOST=127.0.0.1
@@ -72,13 +72,13 @@ If you *prefer* to use `.json` instead of `.env` create a `config.json` file in 
 
 ### *Always* `.gitignore` your configuration file
 
-***Always*** create your `config.env` or `env.json` file
+***Always*** create your `.env` or `env.json` file
 in the ***root directory*** of your project and _don't forget_ to add it to your `.gitignore`to
 avoid _accidentally_ committing your keys/passwords to GitHub where bad people can (*will*) steal your secrets!
 
 e.g:
 ```sh
-echo 'config.env' >> .gitignore
+echo '.env' >> .gitignore
 ```
 ***or***
 ```sh
@@ -99,7 +99,7 @@ npm install env2 --save
 Then in your script/module:
 
 ```javascript
-var env = require('env2')('./path-to-your/config.env')
+var env = require('env2')('./path-to-your/.env');
 
 // your app goes here
 console.log(process.env.DB_HOST); // "127.0.0.1"
@@ -146,7 +146,7 @@ https://github.com/dwyl/env2/issues/1
 <br />
 
 ## Name ?
-
+<small>
 **Q**: Why is it called "env2"?  
 **A**: as the digit in the name suggests, there was/is an "env" (version 1):
 https://www.npmjs.com/package/env written by [@dshaw](https://github.com/dshaw)
@@ -162,3 +162,4 @@ That's why we wrote **env2**.
 
 We have since added better error handling and alternative file types,
 so **env2** is can be considered the "***New & Improved Version***"
+</small>
