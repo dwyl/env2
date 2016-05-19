@@ -9,7 +9,9 @@
     "config",
     "file",
     "aws",
-    "lambda"
+    "lambda",
+    "webpack",
+    "universal"
   ],
   "author": "Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
   "contributors": [
