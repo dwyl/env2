@@ -1,6 +1,6 @@
 {
   "name": "env2",
-  "version": "2.0.8",
+  "version": "2.1.0",
   "description": "Environment Variable Loader",
   "keywords": [
     "env",
@@ -9,7 +9,9 @@
     "config",
     "file",
     "aws",
-    "lambda"
+    "lambda",
+    "webpack",
+    "universal"
   ],
   "author": "Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
   "contributors": [

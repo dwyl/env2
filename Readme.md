@@ -29,6 +29,15 @@ and being able to share a configuration file among the team
 All the entries in the `env` file are exported as environment variables
 available as keys in the `process.env` object.
 
+Works fine with build systems
++like [webpack][webpack] and [browserify][browserify].  
++If you want to use it on the frontend,
++you will need some sort of [filesystem shim][brfs]
++
++[webpack]: https://webpack.github.io/
++[browserify]: http://browserify.org/
++[brfs]: https://github.com/substack/brfs
+
 ## How?
 
 > Need help getting started? [![Join the chat at https://gitter.im/dwyl/chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dwyl/chat/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
