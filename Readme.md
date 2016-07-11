@@ -107,8 +107,8 @@ npm install env2 --save
 
 Then in your script/module:
 
-```javascript
-var env = require('env2')('./path-to-your/.env');
+```js
+const env = require('env2')('./path-to-your/.env');
 
 // your app goes here
 console.log(process.env.DB_HOST); // "127.0.0.1"
