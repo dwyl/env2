@@ -77,6 +77,23 @@ test("Load env.json and confirm process.env.API_KEY is set", function(t) {
   t.end();
 });
 
+test("Load env_brokwn.json and confirm the correct warning is printed", function(t) {
+  var warnings = []
+  var old_console_warn = console.warn.bind(console)
+  console.warn = function(msg) {
+    warnings.push(msg)
+  }
+  require('../lib/env')(path.resolve(__dirname + '/fixtures/env_broken.json'));
+
+  t.equal(warnings.length, 1, 'one warning output');
+
+  t.ok(warnings[0].indexOf('INVALID JSON') !== -1, 'correct warning output')
+
+  console.warn = old_console_warn
+
+  t.end();
+});
+
 test("Passing a .env file ", function (t) {
   require('../lib/env')(dotenv);
   t.ok(process.env.DOT_KEY === 'dots_rule', 'we were able to load in a .env!');
