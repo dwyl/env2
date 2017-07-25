@@ -8,7 +8,7 @@ env2 - environment variable loader
 [![devDependency Status](https://david-dm.org/dwyl/env2/dev-status.svg)](https://david-dm.org/dwyl/env2#info=devDependencies)
 [![npm](https://img.shields.io/npm/v/env2.svg)](https://www.npmjs.com/package/env2)
 
-## Why?
+## Why?
 
 **Environment variables** are the best way of storing sensitive data
 like API Keys, Login Credentials and Database Passwords.
@@ -141,8 +141,6 @@ precendence over the same key in your `env.json` file ... if you prefer
 to have the option to *specify* the priority, please add a comment to the isssue:
 https://github.com/dwyl/env2/issues/1
 
-
-<br />
 ## Huh?
 
 [The Twelve Factor App](http://12factor.net/config) section 3 states:
