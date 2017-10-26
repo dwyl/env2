@@ -29,14 +29,8 @@ and being able to share a configuration file among the team
 All the entries in the `env` file are exported as environment variables
 available as keys in the `process.env` object.
 
-Works fine with build systems
-+like [webpack][webpack] and [browserify][browserify].  
-+If you want to use it on the frontend,
-+you will need some sort of [filesystem shim][brfs]
-+
-+[webpack]: https://webpack.github.io/
-+[browserify]: http://browserify.org/
-+[brfs]: https://github.com/substack/brfs
+Works fine with build systems like [webpack](https://webpack.github.io/) and [browserify](http://browserify.org/).  
+If you want to use it on the frontend, you will need some sort of [filesystem shim](https://github.com/substack/brfs)
 
 ## How?
 
@@ -46,7 +40,7 @@ Works fine with build systems
 
 We use (*and recommend*) `.env` files for environment configuration.  
 We call our file `.env` for *cross-project consistency*.  
-(*but you can call your file what ever you like e.g*: `.env`)  
+(*but you can call your file what ever you like e.g*: `.environment`)  
 
 A `.env` file is a very explicit way of listing environment variables
 without the extra syntax (_potential human/input error_) of a JSON file.
@@ -153,10 +147,10 @@ https://github.com/dwyl/env2/issues/1
 <br />
 
 ## Name ?
-<small>
+
 **Q**: Why is it called "env2"?  
 **A**: as the digit in the name suggests, there was/is an "env" (version 1):
-https://www.npmjs.com/package/env written by [@dshaw](https://github.com/dshaw)
+https://www.npmjs.com/package/env written by [@dshaw](https://github.com/dshaw) 
 sadly, it was never finished and has not been updated in 4 years ...
 We asked Dan if he would accept a Pull Request updating the package:
 https://github.com/dshaw/env/issues/6 and he said he *would* accept it ...
@@ -169,4 +163,4 @@ That's why we wrote **env2**.
 
 We have since added better error handling and alternative file types,
 so **env2** is can be considered the "***New & Improved Version***"
-</small>
+
