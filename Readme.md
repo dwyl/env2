@@ -39,7 +39,7 @@ If you want to use it on the frontend, you will need some sort of [filesystem sh
 ### Create a `.env` File
 
 We use (*and recommend*) `.env` files for environment configuration.  
-We call our file `.env` for *cross-project consistency*.  
+We call our file `.env` for *cross-project consistency* and `.env` is part of the [official `.gitignore` from GitHub for NodeJS](https://github.com/github/gitignore/blob/9ef1596ac14f77ddd79a74e3f621ee117022e107/Node.gitignore#L55-L56).  
 (*but you can call your file what ever you like e.g*: `.environment`)  
 
 A `.env` file is a very explicit way of listing environment variables
