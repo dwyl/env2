@@ -62,7 +62,7 @@ below** for placing it in your `.gitignore` file.
 
 ### *Alternatively* Create an `env.json` Configuration File
 
-If you *prefer* to use `.json` instead of `.env` create a `config.json` file in your repo with the following format:
+If you *prefer* to use `.json` instead of `.env` create a `env.json` file in your repo with the following format:
 
 ```js
 {
