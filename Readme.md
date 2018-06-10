@@ -1,12 +1,13 @@
 env2 - environment variable loader
 ===
 
-[![Build Status](https://travis-ci.org/dwyl/env2.svg)](https://travis-ci.org/dwyl/env2)
-[![Test Coverage](https://codeclimate.com/github/dwyl/env2/badges/coverage.svg)](https://codeclimate.com/github/dwyl/env2/coverage)
-[![Code Climate](https://codeclimate.com/github/dwyl/env2/badges/gpa.svg)](https://codeclimate.com/github/dwyl/env2)
-[![Dependency Status](https://david-dm.org/dwyl/env2.svg)](https://david-dm.org/dwyl/env2)
-[![devDependency Status](https://david-dm.org/dwyl/env2/dev-status.svg)](https://david-dm.org/dwyl/env2#info=devDependencies)
-[![npm](https://img.shields.io/npm/v/env2.svg)](https://www.npmjs.com/package/env2)
+<div align="center">
+[![Build Status](https://img.shields.io/travis/dwyl/env2.svg?style=flat-square)](https://travis-ci.org/dwyl/env2)
+[![HitCount](http://hits.dwyl.io/dwyl/env2.svg)](https://github.com/dwyl/env2)
+[![codecov.io](https://img.shields.io/codecov/c/github/dwyl/env2/master.svg?style=flat-square)](http://codecov.io/github/dwyl/env2?branch=master)
+[![Dependency Status](https://img.shields.io/david/dwyl/env2.svg?style=flat-square)](https://david-dm.org/dwyl/env2)
+[![devDependency Status](https://img.shields.io/david/dev/dwyl/env2.svg?style=flat-square)](https://david-dm.org/dwyl/env2?type=dev)
+</div>
 
 ## Why?
 
@@ -150,7 +151,7 @@ https://github.com/dwyl/env2/issues/1
 
 **Q**: Why is it called "env2"?  
 **A**: as the digit in the name suggests, there was/is an "env" (version 1):
-https://www.npmjs.com/package/env written by [@dshaw](https://github.com/dshaw) 
+https://www.npmjs.com/package/env written by [@dshaw](https://github.com/dshaw)
 sadly, it was never finished and has not been updated in 4 years ...
 We asked Dan if he would accept a Pull Request updating the package:
 https://github.com/dshaw/env/issues/6 and he said he *would* accept it ...
@@ -163,4 +164,3 @@ That's why we wrote **env2**.
 
 We have since added better error handling and alternative file types,
 so **env2** is can be considered the "***New & Improved Version***"
-
