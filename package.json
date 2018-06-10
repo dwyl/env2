@@ -11,17 +11,17 @@
     "aws",
     "lambda",
     "webpack",
-    "universal"
+    "universal",
+    "fast",
+    "secure",
+    "easy",
+    "tested"
   ],
   "author": "Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
   "contributors": [
     {
       "name": "Rafe Kennedy",
       "email": "@rjmk <contact.rafe@gmail.com>"
-    },
-    {
-      "name": "Mina",
-      "email": "@minaorangina"
     }
   ],
   "inspired-by": "https://github.com/dshaw/env (see: http://git.io/vOjWp)",
