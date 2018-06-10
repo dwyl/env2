@@ -112,7 +112,7 @@ test("An .env file with spaces in the definition should work", function (t) {
   new_env.end(env_contents, function () {
     require('../lib/env')(newenv);
     t.ok(process.env.A_KEY, 'thing');
-    fs.unlink(newenv);
+    fs.unlink(newenv, function() { console.log('keep travis happy!') });
     t.end();
   })
 })
@@ -128,7 +128,7 @@ test("A .env file with comments exports the correct variables and ignores commen
     t.ok(process.env.COMMENT_KEY === 'Available', 'first key without comment loaded in');
     t.ok(!process.env.COMMENTED_OUT, 'commented out comment is not exported');
     t.ok(process.env.NEXT_KEY === 'fine', 'key after comment is still exported');
-    fs.unlink(newenv);
+    fs.unlink(newenv, function() { console.log('keep travis happy!') });
     t.end();
   });
 });
