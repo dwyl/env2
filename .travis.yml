@@ -1,9 +1,9 @@
 os:
   - linux
   - osx
-
 language: node_js
 node_js:
-  - 0.10
-  - 4
-  - 6
+  - "node"
+after_success:
+  - pip install --user codecov
+  - codecov --file coverage/lcov.info --disable search
