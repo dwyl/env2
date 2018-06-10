@@ -1,6 +1,6 @@
 {
   "name": "env2",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Environment Variable Loader",
   "keywords": [
     "env",
@@ -11,17 +11,17 @@
     "aws",
     "lambda",
     "webpack",
-    "universal"
+    "universal",
+    "fast",
+    "secure",
+    "easy",
+    "tested"
   ],
   "author": "Nelson <contact.nelsonic@gmail.com> (http://www.dwyl.io)",
   "contributors": [
     {
       "name": "Rafe Kennedy",
       "email": "@rjmk <contact.rafe@gmail.com>"
-    },
-    {
-      "name": "Mina",
-      "email": "@minaorangina"
     }
   ],
   "inspired-by": "https://github.com/dshaw/env (see: http://git.io/vOjWp)",
@@ -38,10 +38,10 @@
     "test": "test"
   },
   "devDependencies": {
-    "decache": "^3.1.0",
-    "istanbul": "^0.4.4",
-    "pre-commit": "^1.1.3",
-    "tape": "^4.6.0"
+    "decache": "^4.4.0",
+    "istanbul": "^0.4.5",
+    "pre-commit": "^1.2.2",
+    "tape": "^4.9.1"
   },
   "scripts": {
     "test": "istanbul cover tape ./test/*.js",
