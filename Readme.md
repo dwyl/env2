@@ -4,7 +4,7 @@ env2 - environment variable loader
 <div align="center">
 
 [![Build Status](https://img.shields.io/travis/dwyl/env2.svg?style=flat-square)](https://travis-ci.org/dwyl/env2)
-[![HitCount](http://hits.dwyl.io/dwyl/env2.svg)](https://github.com/dwyl/env2)
+[![HitCount](http://hits.dwyl.com/dwyl/env2.svg)](https://github.com/dwyl/env2)
 [![codecov.io](https://img.shields.io/codecov/c/github/dwyl/env2/master.svg?style=flat-square)](http://codecov.io/github/dwyl/env2?branch=master)
 [![Dependency Status](https://img.shields.io/david/dwyl/env2.svg?style=flat-square)](https://david-dm.org/dwyl/env2)
 [![devDependency Status](https://img.shields.io/david/dev/dwyl/env2.svg?style=flat-square)](https://david-dm.org/dwyl/env2?type=dev)
